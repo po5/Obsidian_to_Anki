@@ -135,7 +135,7 @@ export class Note extends AbstractNote {
     }
 
     getNoteType(): string {
-        return this.split_text[0]
+        return this.split_text[0].trim()
     }
 
     fieldFromLine(line: string): [string, string] {
@@ -204,7 +204,7 @@ export class InlineNote extends AbstractNote {
     getNoteType(): string {
         const result = this.text.match(InlineNote.TYPE_REGEXP)
         this.text = this.text.slice(result.index + result[0].length)
-        return result[1]
+        return result[1].trim()
     }
 
     getFields(): Record<string, string> {
